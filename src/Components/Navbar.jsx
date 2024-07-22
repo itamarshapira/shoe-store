@@ -1,5 +1,5 @@
 import "./Navbar.css";
-
+import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 function Navbar() {
   return (
     <nav class="pa3 pa1-ns fixed top-0 left-0 w-100 z-999 ">
@@ -17,8 +17,10 @@ function Navbar() {
         <a class="link dim black f6 f4-ns dib mr3" href="#" title="Contact">
           Contact
         </a>
+        {/* Basket cart */}
         <a class="link dim black f6 f4-ns dib mr3 " href="#" title="Shop">
           <i class="fa fa-shopping-basket" aria-hidden="true"></i>
+          {/* onClick={} */}
         </a>
       </div>
     </nav>
