@@ -14,7 +14,9 @@ function ProductCard(props) {
         <h2>{props.name}</h2>
         <p>{props.text}</p>
         <p>{props.price}</p>
-        <button className="btn btn-primary">Add to Cart</button>
+        <button className="btn btn-primary" onClick={onAddToCart}>
+          Add to Cart
+        </button>
       </div>
     </div>
   );
