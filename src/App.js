@@ -4,10 +4,11 @@ import './App.css';
 import Navbar from './Components/Navbar';
 import OpenImg from './Components/OpenImg';
 import ProductCard from './Components/ProductCard';
-import { productInf } from './productInf';
+import { productInf } from './productInf'; // extarnal js file with data of shoes (productInf)
 
 function App() {
 
+  // use state for cart:
   const [cartCount, setCartCount] = useState(0);
 
   const handleAddToCart = () => {
@@ -21,9 +22,9 @@ function App() {
       <OpenImg />
       
       <div className="animate__animated animate__fadeInDown animate__delay-3s	3s animate__slow	2s flex-wrap justify-center">
-        {productInf.map((product) => (
-          <ProductCard
-            key={product.id}
+        {productInf.map((product) => ( // kind of for each to run over the shoes data
+          <ProductCard // what inside is our props:
+            key={product.id} // key is always id
             name={product.name}
             text={product.text}
             price={product.price}
@@ -37,7 +38,8 @@ function App() {
      <div className="cart-count">
         <p>Items in Cart: {cartCount}</p>
       </div>
-  </div>
+
+  </div> // end app div
     
   );
 }

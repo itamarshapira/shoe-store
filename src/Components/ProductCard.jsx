@@ -14,7 +14,7 @@ function ProductCard(props) {
         <h2>{props.name}</h2>
         <p>{props.text}</p>
         <p>{props.price}</p>
-        <button className="btn btn-primary" onClick={onAddToCart}>
+        <button className="btn btn-primary" onClick={props.onAddToCart}>
           Add to Cart
         </button>
       </div>
@@ -22,4 +22,4 @@ function ProductCard(props) {
   );
 }
 
-export default ProductCard;
+export default ProductCard; // this is the way to export componenta!
