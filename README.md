@@ -3,7 +3,7 @@ addig for style :
 \*react-bootstrap bootstrap
 npm install @fortawesome/fontawesome-free
 
-<!-- basic structre component:
+<!-- Basic structre component:
 function App() {
   return (
     <div className="App">
@@ -19,3 +19,5 @@ Additional Notes
 Single Dot (.): Represents the current directory.
 Double Dots (..): Move up one level in the directory hierarchy.
 No Dots: If files are in the same directory, you don’t need any dots (e.g., ./file.png).
+
+Adding here my respone
