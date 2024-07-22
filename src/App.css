@@ -1,0 +1,68 @@
+/* src/App.css */
+
+.App {
+  text-align: center;
+  background: linear-gradient(to bottom right, rgba(13, 52, 80, 0.35), rgb(248, 248, 248), rgb(93, 163, 201));
+  position: relative; /* Required for positioning floating dots */
+  overflow: hidden; /* Ensure dots stay within the container */
+}
+
+/* Floating dots container */
+.floating-dots {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Ensure dots don’t interfere with other elements */
+  z-index: 0; /* Place behind other content */
+}
+
+/* Dot styling */
+.dot {
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.7); /* White color */
+  box-shadow: 0 0 8px rgba(192, 192, 192, 0.8); /* Silver shadow */
+  animation: float 20s infinite ease-in-out, move 30s infinite linear;
+}
+
+/* Specific floating dots with different sizes, positions, and animation durations */
+.dot:nth-child(1) { width: 20px; height: 20px; top: 10%; left: 5%; animation-duration: 25s, 20s; }
+.dot:nth-child(2) { width: 30px; height: 30px; top: 20%; left: 15%; animation-duration: 30s, 25s; }
+.dot:nth-child(3) { width: 15px; height: 15px; top: 30%; left: 25%; animation-duration: 35s, 30s; }
+.dot:nth-child(4) { width: 25px; height: 25px; top: 40%; left: 35%; animation-duration: 40s, 35s; }
+.dot:nth-child(5) { width: 20px; height: 20px; top: 50%; left: 45%; animation-duration: 45s, 40s; }
+.dot:nth-child(6) { width: 30px; height: 30px; top: 60%; left: 55%; animation-duration: 50s, 45s; }
+.dot:nth-child(7) { width: 25px; height: 25px; top: 70%; left: 65%; animation-duration: 55s, 50s; }
+.dot:nth-child(8) { width: 15px; height: 15px; top: 80%; left: 75%; animation-duration: 60s, 55s; }
+.dot:nth-child(9) { width: 20px; height: 20px; top: 90%; left: 85%; animation-duration: 65s, 60s; }
+.dot:nth-child(10) { width: 30px; height: 30px; top: 20%; left: 80%; animation-duration: 70s, 65s; }
+.dot:nth-child(11) { width: 20px; height: 20px; top: 40%; left: 70%; animation-duration: 75s, 70s; }
+.dot:nth-child(12) { width: 25px; height: 25px; top: 60%; left: 60%; animation-duration: 80s, 75s; }
+.dot:nth-child(13) { width: 15px; height: 15px; top: 80%; left: 50%; animation-duration: 85s, 80s; }
+.dot:nth-child(14) { width: 20px; height: 20px; top: 25%; left: 40%; animation-duration: 90s, 85s; }
+.dot:nth-child(15) { width: 30px; height: 30px; top: 50%; left: 30%; animation-duration: 95s, 90s; }
+
+/* Animation for floating effect */
+@keyframes float {
+  0% {
+    transform: translateY(0) rotate(0);
+  }
+  50% {
+    transform: translateY(-20px) rotate(360deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0);
+  }
+}
+
+/* Animation for moving effect */
+@keyframes move {
+  0% {
+    transform: translateX(0) translateY(0);
+  }
+  100% {
+    transform: translateX(calc(100vw - 100%)) translateY(calc(100vh - 100%));
+  }
+}

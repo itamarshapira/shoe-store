@@ -1,0 +1,43 @@
+/* src/Components/OpenImg.css */
+.OpenImg {
+    background-color: aqua;
+    background-image: url('../photos/opening.jpg'); /* Path to your background image */
+    background-size: cover; /* Cover the entire component area */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Prevent repeating the image */
+    height: 100vh; /* Full viewport height, adjust as needed */
+    color: rgb(5, 0, 0); /* Text color for contrast */
+    text-align: center; /* Center text */
+    display: flex; /* Flexbox for centering content */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center children vertically */
+    align-items: center; /* Center children horizontally */
+    padding: 15rem; /* Padding around the content */
+    border-radius: 30px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3); /* Shadow effect */
+    
+  }
+  
+  .OpenImg h1 {
+    font-size: 4.5rem; /* Larger font size for heading */
+    margin-bottom: 1rem; /* Spacing below the heading */
+    
+  }
+  
+  .OpenImg p {
+    font-size: 2.2rem; /* Font size for the paragraph */
+    max-width: 600px; /* Limit paragraph width */
+    line-height: 1.5; /* Improve readability */
+    font-style: italic;
+    font-weight: bold;
+    
+    
+  }
+   .write{text-align: center; /* Center text */
+    display: flex; /* Flexbox for centering content */
+    flex-direction: column; /* Stack children vertically */
+    justify-content: center; /* Center children vertically */
+    align-items: center; /* Center children horizontally */
+    height: 50vh;
+    /* background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.35), lightblue, white); */
+}
