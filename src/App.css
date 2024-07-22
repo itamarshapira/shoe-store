@@ -6,6 +6,18 @@
   position: relative; /* Required for positioning floating dots */
   overflow: hidden; /* Ensure dots stay within the container */
 }
+.cart-count {
+  margin-top: 20px;
+  font-size: 1.5rem;
+  color: #333;
+}
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  gap: 1rem; /* Space between cards */
+  padding: 1rem; /* Padding around the container */
+  justify-items: center; /* Center items in each grid cell */
+}
 
 /* Floating dots container */
 .floating-dots {
