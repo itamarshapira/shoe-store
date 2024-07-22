@@ -18,6 +18,11 @@
   padding: 1rem; /* Padding around the container */
   justify-items: center; /* Center items in each grid cell */
 }
+.card-container .tc {
+  width: 100%;
+  max-width: 300px; /* Ensure cards are not too wide */
+}
+
 
 /* Floating dots container */
 .floating-dots {
