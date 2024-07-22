@@ -1,4 +1,5 @@
 // src/Components/ProductCard.jsx
+import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 import React from "react";
 
 function ProductCard(props) {
@@ -13,6 +14,7 @@ function ProductCard(props) {
         <h2>{props.name}</h2>
         <p>{props.text}</p>
         <p>{props.price}</p>
+        <button className="btn btn-primary">Add to Cart</button>
       </div>
     </div>
   );

@@ -17,9 +17,6 @@ function Navbar() {
         <a class="link dim black f6 f4-ns dib mr3" href="#" title="Contact">
           Contact
         </a>
-        <a class="link dim black f6 f4-ns dib mr3 " href="#" title="Store">
-          Store
-        </a>
         <a class="link dim black f6 f4-ns dib mr3 " href="#" title="Shop">
           <i class="fa fa-shopping-basket" aria-hidden="true"></i>
         </a>
