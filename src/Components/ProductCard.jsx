@@ -27,4 +27,4 @@ function ProductCard(props) {
   );
 }
 
-export default ProductCard; // this is the way to export componenta!
+export default ProductCard; // This is the way to export componenta!
