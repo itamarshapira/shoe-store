@@ -8,9 +8,19 @@ const OffCanvasCart = ({ isOpen, toggle, cart, productInf }) => {
   // including only those products from productInf whose IDs exist as keys in the cart object.
   const cartItems = productInf.filter((product) => cart[product.id]);
 
-  // Function to calculate the total price for a product
-  const getTotalPrice = (price, quantity) =>
+  // Function to calculate the total price per product
+  const getTotalPricePerProduct = (price, quantity) =>
     (parseFloat(price.replace("$", "")) * quantity).toFixed(2);
+
+  //Function to caculate the total price of the cart.
+  const getTotalCartPrice = () => {
+    let total = 0;
+    cartItems.forEach(product => {
+      total += parseFloat(getTotalPricePerProduct(product.price, cart[product.id]));
+    });
+    return total.toFixed(2);
+  };
+  
 
   return (
     // Offcanvas component from Reactstrap, with isOpen and toggle props for visibility
@@ -37,13 +47,23 @@ const OffCanvasCart = ({ isOpen, toggle, cart, productInf }) => {
                   <p>Quantity: {cart[product.id]}</p>
                   {/* Product price */}
                   <p>Price: {product.price}</p>
+
                   {/* Total price for the product */}
                   <p>
-                    Total: ${getTotalPrice(product.price, cart[product.id])}
+                    Total: ${getTotalPricePerProduct(product.price, cart[product.id])}
+                    {/*getTotalPrice=+getTotalPricePerProduct */}
                   </p>
+                  <button type="button" class="btn btn-danger" onClick={cart[product.id]-1}>
+                    Cancel Product
+                  </button>
+                  
                 </div>
               </div>
             ))}
+              {/* Display total price of the cart */}
+              <div className="mt-3">
+                <h5>Total Cart Price: ${getTotalCartPrice()}</h5>
+              </div>
           </div>
         ) : (
           // Message when the cart is empty
