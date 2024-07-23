@@ -8,17 +8,20 @@ import OffCanvasCart from './Components/OffCanvasCart'; // Import OffCanvasCart 
 import { productInf } from './productInf'; // Import product data
 
 function App() {
-  // State to manage the cart, initially an empty object
-  const [cart, setCart] = useState({});
+  //cart is an object that initially starts as an empty object {}. importent: not an int!
+  //an object in JavaScript always consists of key-value pairs
+  const [cart, setCart] = useState({}); // so the cart state baseicly represnt to us a shoe with id and amount!
   
   // State to manage the visibility of the OffCanvasCart, initially false (closed)
   const [isOffCanvasOpen, setIsOffCanvasOpen] = useState(false);
 
+  const [notification, setNotification] = useState('');
+
   // Function to handle adding products to the cart
   const handleAddToCart = (productId) => {
-    setCart((prevCart) => {
+    setCart((prevCart) => {  // prevCart is the latest state of 'cart' when this function runs
       // Create a copy of the previous cart state
-      const newCart = { ...prevCart };
+      const newCart = { ...prevCart }; // This line creates a shallow copy of the prevCart object.
       // If the product already exists in the cart, increment its quantity
       if (newCart[productId]) {
         newCart[productId] += 1;
@@ -28,6 +31,10 @@ function App() {
       }
       return newCart; // Return the updated cart state
     });
+    
+    setNotification('Item added to cart!');
+    setTimeout(() => setNotification(''), 2000); // Clear the notification after 2 seconds
+
   };
 
   // Function to toggle the OffCanvasCart visibility
@@ -45,6 +52,9 @@ function App() {
         {/* OpenImg component */}
         <OpenImg />
         
+         {/* Display notification message */}
+         {notification && <div className="notification">{notification}</div>}
+
         {/* Container for ProductCard components */}
         <div className="card-container animate__animated animate__fadeInDown animate__delay-3s animate__slow">
           {/* Map over productInf array and create a ProductCard for each product */}
@@ -55,7 +65,7 @@ function App() {
               text={product.text} // Product description or text
               price={product.price} // Product price
               image={product.image} // Product image URL
-              onAddToCart={() => handleAddToCart(product.id)} // Pass handleAddToCart with product ID
+              onAddToCart={() => handleAddToCart(product.id)} // Pass handleAddToCart with product ID as a prop to ProductCard component
             />
           ))}
         </div>
@@ -68,9 +78,10 @@ function App() {
       
       {/* OffCanvasCart component with state and props for cart and toggle function */}
       <OffCanvasCart 
+      // props for offCanvasCart:
         isOpen={isOffCanvasOpen} // Whether the cart is open or not
         toggle={toggleOffCanvas} // Function to toggle cart visibility
-        cart={cart} // Cart items and quantities
+        cart={cart} // Cart items and quantities from the cart state 
         productInf={productInf} // Product data to display in the cart
       />
     </div>
