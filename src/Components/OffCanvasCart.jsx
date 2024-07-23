@@ -2,9 +2,10 @@
 import React from "react"; // Import React
 import { Offcanvas, OffcanvasHeader, OffcanvasBody } from "reactstrap"; // Import components from Reactstrap
 
-// Functional component for the off-canvas cart
+// Functional component for the off-canvas cart. cart object: Holds the current state of the cart with product IDs as keys and quantities as values.
 const OffCanvasCart = ({ isOpen, toggle, cart, productInf }) => {
-  // Filter the products that are in the cart based on the cart state
+  // filter method: Creates a new array (cartItems) by
+  // including only those products from productInf whose IDs exist as keys in the cart object.
   const cartItems = productInf.filter((product) => cart[product.id]);
 
   // Function to calculate the total price for a product
@@ -13,7 +14,7 @@ const OffCanvasCart = ({ isOpen, toggle, cart, productInf }) => {
 
   return (
     // Offcanvas component from Reactstrap, with isOpen and toggle props for visibility
-    <Offcanvas isOpen={isOpen} toggle={toggle} className="w-50">
+    <Offcanvas isOpen={isOpen} toggle={toggle} className="w-50 ">
       {/* Header of the off-canvas cart with a toggle button */}
       <OffcanvasHeader toggle={toggle}>Cart</OffcanvasHeader>
       <OffcanvasBody>

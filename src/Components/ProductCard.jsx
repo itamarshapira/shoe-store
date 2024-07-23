@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.min.css"; // Import Bootstrap CSS
 import React from "react";
 
 function ProductCard(props) {
-  // getting the props form app.js
+  // getting the props form app.js (this is the product inf)
   //, to use the props we do {props.name} or what ever
   return (
     <div className="ProductCard tc   dib br3 pa3 ma2 grow bw2">
