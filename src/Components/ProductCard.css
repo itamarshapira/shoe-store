@@ -1,3 +1,4 @@
+/* Background for each product card that exist in the website */
 .ProductCard
 {
     background: linear-gradient(to bottom right, rgba(34, 98, 144, 0.35), rgb(248, 248, 248), rgb(19, 78, 109));
