@@ -7,10 +7,13 @@ import ProductCard from './Components/ProductCard'; // Import ProductCard compon
 import OffCanvasCart from './Components/OffCanvasCart'; // Import OffCanvasCart component
 import { productInf } from './productInf'; // Import product data
 
+import {BrowserRouter, Routes, Route} from 'react-router-dom'; // Import BrowserRouter and Routes from react-router-dom
+import PaymentPage from './Components/PaymentPage'; // Import PaymentPage component
+
 function App() {
-  //cart is an object that initially starts as an empty object {}. importent: not an int!
-  //an object in JavaScript always consists of key-value pairs
-  const [cart, setCart] = useState({}); // so the cart state baseicly represnt to us a shoe with id and amount!
+  // cart is an object that initially starts as an empty object {}. important: not an int!
+  // an object in JavaScript always consists of key-value pairs
+  const [cart, setCart] = useState({}); // so the cart state basically represents to us a shoe with id and amount!
   
   // State to manage the visibility of the OffCanvasCart, initially false (closed)
   const [isOffCanvasOpen, setIsOffCanvasOpen] = useState(false);
@@ -34,10 +37,9 @@ function App() {
 
     setNotification('Item added to cart!');
     setTimeout(() => setNotification(''), 2000); // Clear the notification after 2 seconds
-
   };
 
-// func to handle  remove from cart that send as a props to OffCanvas componnent
+  // Function to handle remove from cart that sends as a prop to OffCanvas component
   const handleRemoveFromCart = (productId) => {
     setCart((prevCart) => {
       const newCart = { ...prevCart };
@@ -58,49 +60,55 @@ function App() {
   };
 
   return (
-    <div className="App">
-      {/* Container for Navbar and other elements */}
-      <div className="flex flex-wrap justify-center">
-        {/* Navbar component with the toggleOffCanvas function passed as a prop */}
-        <Navbar toggleOffCanvas={toggleOffCanvas} />
-        
-        {/* OpenImg component */}
-        <OpenImg />
-        
-         {/* Display notification message */}
-         {notification && <div className="notification">{notification}</div>}
+      <div className="App">
+        {/* Container for Navbar and other elements */}
+        <div className="flex flex-wrap justify-center">
+          {/* Navbar component with the toggleOffCanvas function passed as a prop */}
+          <Navbar toggleOffCanvas={toggleOffCanvas} />
+          
+          {/* OpenImg component */}
+          <OpenImg />
+          
+          {/* Display notification message */}
+          {notification && <div className="notification">{notification}</div>}
 
-        {/* Container for ProductCard components */}
-        <div className="card-container animate__animated animate__fadeInDown animate__delay-3s animate__slow">
-          {/* Map over productInf array and create a ProductCard for each product */}
-          {productInf.map((product) => (
-            <ProductCard // props for Product Card :
-              key={product.id} // Unique key for each ProductCard
-              name={product.name} // Product name
-              text={product.text} // Product description or text
-              price={product.price} // Product price
-              image={product.image} // Product image URL
-              onAddToCart={() => handleAddToCart(product.id)} // Pass handleAddToCart with product ID as a prop to ProductCard component
-            />
-          ))}
+          {/* Container for ProductCard components */}
+          <div className="card-container animate__animated animate__fadeInDown animate__delay-3s animate__slow">
+            {/* Map over productInf array and create a ProductCard for each product */}
+            {productInf.map((product) => (
+              <ProductCard // props for Product Card:
+                key={product.id} // Unique key for each ProductCard
+                name={product.name} // Product name
+                text={product.text} // Product description or text
+                price={product.price} // Product price
+                image={product.image} // Product image URL
+                onAddToCart={() => handleAddToCart(product.id)} // Pass handleAddToCart with product ID as a prop to ProductCard component
+              />
+            ))}
+          </div>
         </div>
-      </div>
-      
-      {/* Cart count section (currently commented out) */}
-      {/* <div className="cart-count">
-        <p>Items in Cart: {cartCount}</p>
-      </div> */}
-      
-      {/* OffCanvasCart component with state and props for cart and toggle function */}
-      <OffCanvasCart 
-      // props for offCanvasCart:
-        isOpen={isOffCanvasOpen} // Whether the cart is open or not
-        toggle={toggleOffCanvas} // Function to toggle cart visibility
-        cart={cart} // Cart items and quantities from the cart state 
-        productInf={productInf} // Product data to display in the cart
-        handleRemoveProduct={handleRemoveFromCart} // Pass remove function as a prop
-      />
+        
+        {/* Cart count section (currently commented out) */}
+        {/* <div className="cart-count">
+          <p>Items in Cart: {cartCount}</p>
+        </div> */}
+        {/* OffCanvasCart component with state and props for cart and toggle function */}
+        <OffCanvasCart 
+          // props for offCanvasCart:
+          isOpen={isOffCanvasOpen} // Whether the cart is open or not
+          toggle={toggleOffCanvas} // Function to toggle cart visibility
+          cart={cart} // Cart items and quantities from the cart state 
+          productInf={productInf} // Product data to display in the cart
+          handleRemoveProduct={handleRemoveFromCart} // Pass remove function as a prop
+        />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<div />} />
+          <Route path="/payment" element={<PaymentPage />} />
+        </Routes>
+      </BrowserRouter>
     </div>
+    
   );
 }
 
