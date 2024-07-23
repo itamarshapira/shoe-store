@@ -31,10 +31,25 @@ function App() {
       }
       return newCart; // Return the updated cart state
     });
-    
+
     setNotification('Item added to cart!');
     setTimeout(() => setNotification(''), 2000); // Clear the notification after 2 seconds
 
+  };
+
+// func to handle  remove from cart that send as a props to OffCanvas componnent
+  const handleRemoveFromCart = (productId) => {
+    setCart((prevCart) => {
+      const newCart = { ...prevCart };
+      if (newCart[productId]) {
+        if (newCart[productId] > 1) {
+          newCart[productId] -= 1;
+        } else {
+          delete newCart[productId]; // Remove the product if quantity is 1
+        }
+      }
+      return newCart;
+    });
   };
 
   // Function to toggle the OffCanvasCart visibility
@@ -59,7 +74,7 @@ function App() {
         <div className="card-container animate__animated animate__fadeInDown animate__delay-3s animate__slow">
           {/* Map over productInf array and create a ProductCard for each product */}
           {productInf.map((product) => (
-            <ProductCard
+            <ProductCard // props for Product Card :
               key={product.id} // Unique key for each ProductCard
               name={product.name} // Product name
               text={product.text} // Product description or text
@@ -83,6 +98,7 @@ function App() {
         toggle={toggleOffCanvas} // Function to toggle cart visibility
         cart={cart} // Cart items and quantities from the cart state 
         productInf={productInf} // Product data to display in the cart
+        handleRemoveProduct={handleRemoveFromCart} // Pass remove function as a prop
       />
     </div>
   );
