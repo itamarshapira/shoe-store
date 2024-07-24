@@ -7,8 +7,6 @@ import ProductCard from './Components/ProductCard'; // Import ProductCard compon
 import OffCanvasCart from './Components/OffCanvasCart'; // Import OffCanvasCart component
 import { productInf } from './productInf'; // Import product data
 
-import {BrowserRouter, Routes, Route} from 'react-router-dom'; // Import BrowserRouter and Routes from react-router-dom
-import PaymentPage from './Components/PaymentPage'; // Import PaymentPage component
 
 function Home() {
   // cart is an object that initially starts as an empty object {}. important: not an int!

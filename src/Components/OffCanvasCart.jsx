@@ -1,6 +1,7 @@
 // src/Components/OffCanvasCart.jsx
 import React from "react"; // Import React
 import { Offcanvas, OffcanvasHeader, OffcanvasBody } from "reactstrap"; // Import components from Reactstrap
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const OffCanvasCart = ({
   isOpen, // for reactstrap
@@ -9,10 +10,12 @@ const OffCanvasCart = ({
   productInf,
   handleRemoveProduct, // Function to handle item removal
 }) => {
+// Initialize useNavigate
+  const navigate = useNavigate();
 
   // Function to handle payment button click
   const handlePayment = () => {
-    window.location.href = '/payment'; // Redirect to the /payment path
+    navigate('/payment', { state: { cart, productInf } }); // Redirect to /payment with cart data
   };
 
   // Filter method to get items in the cart
