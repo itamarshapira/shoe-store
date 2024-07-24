@@ -41,19 +41,21 @@ const PaymentPage = () => {
                   Total: $
                   {getTotalPricePerProduct(product.price, cart[product.id])}
                 </p>
-                  <div className="mt-3">
+                <div className="mt-3">
                   <h5>Total Cart Price: ${getTotalCartPrice()}</h5>
-                  </div>
+                </div>
               </div>
-            </div> 
+            </div>
           ))}
-         
         </div> //ProductInf - finish.
       ) : (
         <p>Your cart is empty.</p>
       )}
-        {/* Pass the total cart price here */}
-      <ReservationForm totalCartPrice={parseFloat(getTotalCartPrice())} />
+      {/* Pass the total cart price here */}
+      <ReservationForm
+        totalCartPrice={parseFloat(getTotalCartPrice())}
+        isCartEmpty={cartItems.length === 0}
+      />
     </div> //PaymentPage - finish.
   );
 };

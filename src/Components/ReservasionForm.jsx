@@ -1,18 +1,15 @@
 import React, { useRef, useState, useEffect } from "react";
 import { Form, Button, Container, Row, Col } from "react-bootstrap";
 
-const ReservationForm = ({ totalCartPrice }) => {
-  // Define refs for all form fields
+const ReservationForm = ({ totalCartPrice, isCartEmpty }) => {
   const nameRef = useRef("");
   const emailRef = useRef("");
   const phoneRef = useRef("");
   const addressRef = useRef("");
   const deliveryRef = useRef("");
 
-  // State for calculated total price
   const [totalPrice, setTotalPrice] = useState(totalCartPrice);
 
-  // Update the total price whenever the delivery option changes
   useEffect(() => {
     const handleDeliveryChange = () => {
       const deliveryFee = deliveryRef.current.value === "3 days" ? 10 : 0;
@@ -29,18 +26,32 @@ const ReservationForm = ({ totalCartPrice }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Gather form data from refs
     const formData = {
       name: nameRef.current.value,
       email: emailRef.current.value,
       phone: phoneRef.current.value,
       address: addressRef.current.value,
       delivery: deliveryRef.current.value,
+      totalPrice: totalPrice,
     };
 
-    // Handle form submission
-    console.log("Reservation Data:", formData);
-    console.log("Total Price:", totalPrice);
+    // POST request to server
+    fetch("http://localhost:3001/api/reservations", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Success:", data);
+        // Handle success (e.g., show a confirmation message)
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+        // Handle error (e.g., show an error message)
+      });
   };
 
   return (
@@ -99,11 +110,7 @@ const ReservationForm = ({ totalCartPrice }) => {
           <Col md={12}>
             <Form.Group controlId="formDelivery" className="mb-3">
               <Form.Label>Delivery Option</Form.Label>
-              <Form.Control
-                as="select"
-                ref={deliveryRef}
-                required
-              >
+              <Form.Control as="select" ref={deliveryRef} required>
                 <option value="3 days">In 3 days (+ $10)</option>
                 <option value="14 days">In 14 days (Free)</option>
               </Form.Control>
@@ -115,7 +122,7 @@ const ReservationForm = ({ totalCartPrice }) => {
             <h4>Total Price: ${totalPrice.toFixed(2)}</h4>
           </Col>
         </Row>
-        <Button variant="primary" type="submit">
+        <Button variant="primary" type="submit" disabled={isCartEmpty}>
           Submit
         </Button>
       </Form>
