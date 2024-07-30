@@ -10,6 +10,7 @@ import Br from "./Components/Br";
 import Footer from "./Components/Footer";
 
 function Home() {
+  // ofirrrrrrrrrrrr
   //using use state hook : named cart.
   // cart is an object that initially starts as an empty object {}. important: not an int!
   // an object in JavaScript always consists of key-value pairs
