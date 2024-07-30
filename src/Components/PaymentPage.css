@@ -1,0 +1,43 @@
+.PaymentPage {
+    background-color: #f8f9fa; /* Light grey background */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    
+  }
+  
+  .ProductInf {
+    margin-top: 20px;
+  }
+  
+  .product-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .product-image {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+  }
+  
+  .product-details {
+    flex: 1;
+  }
+  
+  h1, h5 {
+    background: linear-gradient(to bottom right, rgb(80, 13, 70), rgb(15, 78, 108), rgb(52, 4, 52));
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  
+  p {
+    margin-bottom: 0.5rem;
+  }
+  
+  .mt-3 {
+    margin-top: 1rem;
+  }
+  

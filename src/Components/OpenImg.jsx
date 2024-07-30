@@ -5,7 +5,7 @@ import "./OpenImg.css"; // Import the CSS file
 function OpenImg() {
   return (
     <div className="OpenImg tc   shadow-7 grow bw1 flex flex-wrap justify-center ">
-      <div className="write flex flex-wrap justify-center">
+      <div className="write ">
         <h1>Welcome to Our Store!</h1>
         <p className="">
           Explore our collection of the finest shoes. Click on the image to

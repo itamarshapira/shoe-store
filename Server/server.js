@@ -19,14 +19,22 @@ app.get('/', (req, res) => {
 
 
 // POST route to handle reservation form submission
-app.post('/api/reservations', (req, res) => {
-    const newReservation = req.body;
+app.post('/reservations', (req, res) => {
+    const newReservation = {
+      first_name: req.body.first_name,
+      email: req.body.email,
+      phone: req.body.phone,
+      address: req.body.address,
+      delivery: req.body.delivery,
+      totalPrice: req.body.totalPrice,
+      cartItems: req.body.cartItems,
+    }
   
     reservations_coll.insert(newReservation, (err, doc) => {
       if (err) {
         res.status(500).json({ error: 'Internal Server Error' });
       } else {
-        res.status(201).json({ message: 'Register successfully!' });
+        res.status(201).json({ message: 'Reservation successfully created!', orderId: doc._id }); // take the mongo _id and sent it back to cleint side !
       }
     });
 

@@ -1,0 +1,28 @@
+footer {
+    background-color: #000000e9; /* Dark background */
+    color: #000000; /* White text */
+  }
+  
+  footer a {
+    color: #ffffff; /* White links */
+    text-decoration: none; /* Remove underline from links */
+  }
+  
+  footer a:hover {
+    text-decoration: underline; /* Underline links on hover */
+  }
+  
+  footer .social-icons a {
+    color: #ffffff;
+    margin-right: 10px;
+    transition: color 0.3s;
+  }
+  
+  footer .social-icons a:hover {
+    color: #007bff; /* Change color on hover */
+  }
+  
+  .h5
+  {
+    color: #f6fafd !important
+  }

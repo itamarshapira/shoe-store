@@ -1,6 +1,6 @@
 /* src/Components/OpenImg.css */
 .OpenImg {
-    background-color: aqua;
+    
     background-image: url('../photos/opening.jpg'); /* Path to your background image */
     background-size: cover; /* Cover the entire component area */
     background-position: center; /* Center the background image */
@@ -29,9 +29,7 @@
     max-width: 600px; /* Limit paragraph width */
     line-height: 1.5; /* Improve readability */
     font-style: italic;
-    font-weight: bold;
-    
-    
+    font-weight: bold;  
   }
    .write{text-align: center; /* Center text */
     display: flex; /* Flexbox for centering content */
@@ -41,3 +39,12 @@
     height: 50vh;
     /* background: linear-gradient(to bottom right, rgba(255, 255, 255, 0.35), lightblue, white); */
 }
+/* Media query for small screens */
+@media (max-width: 600px) { 
+  .write {
+    padding-top: 4rem !important; /* Adjust padding for small screens */
+    font-size: 10px   !important;
+    
+  }
+} 
+
