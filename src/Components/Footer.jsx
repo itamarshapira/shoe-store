@@ -10,14 +10,14 @@ const Footer = () => {
       <Container>
         <Row>
           <Col md={4} className="mb-3">
-            <h5>About Us</h5> <hr />
+            <h4>About Us</h4> <hr />
             <p>
               We are a team of passionate developers dedicated to creating
               amazing web experiences.
             </p>
           </Col>
           <Col md={4} className="mb-3">
-            <h5>Quick Links</h5> <hr />
+            <h4>Quick Links</h4> <hr />
             <ul className="list-unstyled">
               <li>
                 <a href="#" className="text-white">
@@ -42,7 +42,7 @@ const Footer = () => {
             </ul>
           </Col>
           <Col md={4} className="mb-3">
-            <h5>Contact Us</h5> <hr />
+            <h4>Contact Us</h4> <hr />
             <ul className="list-unstyled">
               <li>
                 <i className="fas fa-map-marker-alt"></i> 1234 Street Name,
