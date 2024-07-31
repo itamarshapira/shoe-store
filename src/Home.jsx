@@ -10,7 +10,7 @@ import Br from "./Components/Br";
 import Footer from "./Components/Footer";
 
 function Home() {
-  //using use state hook : named cart.
+  //**using use state hook : named cart.
   // cart is an object that initially starts as an empty object {}. important: not an int!
   // an object in JavaScript always consists of key-value pairs
   const [cart, setCart] = useState({}); // so the cart state basically represents to us a shoe with id and amount!
@@ -55,12 +55,11 @@ function Home() {
     });
   };
 
+  // ! need to investigate:
+  // clear the cart - we will use that func after submit the reservtiom form. (make the cart an empty obj again like the beggining)
   const clearCart = () => {
     setCart({});
   };
-
-  // clear the cart - we will use that func after submit the reservtiom form. (make the cart an empty obj again like the beggining)
-  // with the setcart we set the cart to empty obj.
 
   // Function to toggle the OffCanvasCart visibility
   const toggleOffCanvas = () => {
@@ -87,7 +86,7 @@ function Home() {
         <div className="card-container animate__animated animate__fadeInDown animate__delay-3s animate__slow">
           {/* Map over productInf array and create a ProductCard for each product */}
           {productInf.map((product) => (
-            <ProductCard // props for Product Card:
+            <ProductCard //* props for Product Card:
               key={product.id} // Unique key for each ProductCard
               name={product.name} // Product name
               text={product.text} // Product description or text
@@ -99,11 +98,7 @@ function Home() {
         </div>
       </div>
 
-      {/* Cart count section (currently commented out) */}
-      {/* <div className="cart-count">
-          <p>Items in Cart: {cartCount}</p>
-        </div> */}
-      {/* OffCanvasCart component with state and props for cart and toggle function */}
+      {/* //*OffCanvasCart component with state and props for cart and toggle function */}
       <OffCanvasCart
         // props for offCanvasCart:
         isOpen={isOffCanvasOpen} // Whether the cart is open or not
