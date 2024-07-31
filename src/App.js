@@ -11,13 +11,14 @@ import PaymentPage from './Components/PaymentPage'; // Import PaymentPage compon
 import Home from './Home';
 
 function App() {
+  //const [cart, setCart] = useState({});cart={cart} setCart={setCart} setCart={setCart}
   return (
     <div>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home  />} />
           <Route path="/#" element={<Home />} />
-          <Route path="/payment" element={<PaymentPage />} />
+          <Route path="/payment" element={<PaymentPage   />} />
         </Routes>
       </BrowserRouter>
     </div>

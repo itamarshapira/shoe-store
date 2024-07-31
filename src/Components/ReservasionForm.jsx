@@ -8,7 +8,8 @@ const ReservationForm = ({
   totalCartPrice,
   isCartEmpty,
   cartItems,
-  clearCart,
+  setCart,
+  cart,
 }) => {
   // useRef hooks to create references for form fields
   const nameRef = useRef("");
@@ -24,28 +25,55 @@ const ReservationForm = ({
   const [successMessage, setSuccessMessage] = useState("");
   const [orderId, setOrderId] = useState(null);
 
+  const [isSubmitted, setIsSubmitted] = useState(false); // State to track form submission status
+
+  // const clearCart = () => {
+  //   setCart({});
+  // };
+
   const navigate = useNavigate(); // Initialize useNavigate
 
+  // useEffect(() => {
+  //   if (isSubmitted) {
+  //     setCart({});
+  //   }
+  // }, [isSubmitted]);
+
   // The useEffect hook takes two arguments:
-  // A function that contains the side effect code.
-  // An array of dependencies. The side effect runs when these dependencies change. Here, totalCartPrice is the dependency.
+  // 1. A function that contains the side effect code.
+  // 2. An array of dependencies. The side effect runs when these dependencies change. Here, totalCartPrice is the dependency.
   useEffect(() => {
+    // Defines a function to handle changes in the delivery option.
     // Calculates the delivery fee based on the selected delivery option and updates the total price.
     const handleDeliveryChange = () => {
-      const deliveryFee = deliveryRef.current.value === "3 days" ? 10 : 0;
-      setTotalPrice(totalCartPrice + deliveryFee); // Updater function that updates the totalPrice state with the new total price, including the delivery fee.
+      // Checks if the selected delivery option is "3 days" and sets the delivery fee to $10, otherwise sets it to $0.
+      const deliveryFee = deliveryRef.current?.value === "3 days" ? 10 : 0;
+      // Updates the totalPrice state with the new total price, including the delivery fee.
+      setTotalPrice(totalCartPrice + deliveryFee);
     };
 
-    handleDeliveryChange(); // Initial calculation
-    deliveryRef.current.addEventListener("change", handleDeliveryChange);
+    handleDeliveryChange(); // Initial calculation when the component mounts.
 
+    const deliveryElement = deliveryRef.current; // Stores the current reference to the delivery select element.
+
+    if (deliveryElement) {
+      // Adds an event listener to the delivery select element to handle changes.
+      deliveryElement.addEventListener("change", handleDeliveryChange);
+    }
+
+    // Cleanup function that runs when the component unmounts or before re-running the effect:
+    // Removes the event listener from the delivery select element to prevent memory leaks.
     return () => {
-      deliveryRef.current.removeEventListener("change", handleDeliveryChange);
+      if (deliveryElement) {
+        deliveryElement.removeEventListener("change", handleDeliveryChange);
+      }
     };
-  }, [totalCartPrice]);
+  }, [totalCartPrice]); // The effect runs whenever totalCartPrice changes.
 
   const handleSubmit = (e) => {
     console.log("Form submitted"); // Debug statement
+    console.log("before clean : ", cart); // Debug statement
+    //console.log("befor clean : " + cart[0].name);
     e.preventDefault();
     const formData = {
       name: nameRef.current.value,
@@ -85,9 +113,11 @@ const ReservationForm = ({
         console.log("Success:", data);
         setOrderId(data.orderId); // Set the order ID from the response (server side)
         setSuccessMessage("Order placed successfully!"); // Set the success message (sever side)
-        clearCart(); // Clear the cart on successful submission
-        console.log("redirect..."); // Debug statement
-        navigate("/"); // Redirect to the home page
+
+        setIsSubmitted(true); // Set the form submission status to true
+
+        //clearCart();
+        console.log("after clean : ", cart); // Debug statement
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -171,6 +201,20 @@ const ReservationForm = ({
         <Button variant="primary" type="submit" disabled={isCartEmpty}>
           Submit
         </Button>
+        {/* Conditional Rendering: for the Return to Home Page:
+            The "Return to Home Page" button is rendered only when isSubmitted is true using {isSubmitted && ( ... )}.
+            This means the button is not part of the initial render and will only appear after the form has been submitted successfully. */}
+        {isSubmitted && (
+          <div className="text-center mt-3 animate__animated  animate__tada animate__slow	2s; ">
+            <Button
+              variant="outline-success"
+              onClick={() => navigate("/")}
+              className="return-button"
+            >
+              Return to Home Page
+            </Button>
+          </div>
+        )}
       </Form>
     </Container>
   );

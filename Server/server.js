@@ -4,6 +4,8 @@ const mongojs = require("mongojs");
 //If you use the shared mongodb server:
 const db = mongojs(
   'mongodb+srv://Student:webdev2024student@cluster0.uqyflra.mongodb.net/webdev2024'
+  // my mongo: 'mongodb://localhost:27017/'
+
 );
 
 //Edit this line to point to your specific collection!

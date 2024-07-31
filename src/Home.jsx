@@ -10,7 +10,6 @@ import Br from "./Components/Br";
 import Footer from "./Components/Footer";
 
 function Home() {
-  // ofirrrrrrrrrrrr
   //using use state hook : named cart.
   // cart is an object that initially starts as an empty object {}. important: not an int!
   // an object in JavaScript always consists of key-value pairs
@@ -56,11 +55,12 @@ function Home() {
     });
   };
 
-  // clear the cart - we will use that func after submit the reservtiom form. (make the cart an empty obj again like the beggining)
-  // with the setcart we set the cart to empty obj.
   const clearCart = () => {
     setCart({});
   };
+
+  // clear the cart - we will use that func after submit the reservtiom form. (make the cart an empty obj again like the beggining)
+  // with the setcart we set the cart to empty obj.
 
   // Function to toggle the OffCanvasCart visibility
   const toggleOffCanvas = () => {

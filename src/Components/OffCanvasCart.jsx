@@ -18,7 +18,7 @@ const OffCanvasCart = ({
 
   // Function to handle payment button click using navigate:
   const handlePayment = () => {
-    clearCart();
+    //clearCart();
     navigate("/payment", { state: { cart, productInf } }); // Redirect to /payment with cart data
   };
 
