@@ -16,6 +16,7 @@ app.use(express.json()); // Middleware to parse JSON body
 
 // Simple route to test server
 app.get('/', (req, res) => {
+  // chake that server work 
   res.send('Hello from the server!');
 });
 

@@ -56,10 +56,11 @@ function Home() {
   };
 
   // ! need to investigate:
-  // clear the cart - we will use that func after submit the reservtiom form. (make the cart an empty obj again like the beggining)
-  const clearCart = () => {
-    setCart({});
-  };
+  // todo : need to understant and finish that
+  // ?clear the cart - we will use that func after submit the reservtiom form. (make the cart an empty obj again like the beggining)
+  //? const clearCart = () => {
+  // ?  setCart({});
+  //? };
 
   // Function to toggle the OffCanvasCart visibility
   const toggleOffCanvas = () => {
@@ -106,7 +107,7 @@ function Home() {
         cart={cart} // Cart items and quantities from the cart state hook
         productInf={productInf} // Product data to display in the cart
         handleRemoveProduct={handleRemoveFromCart} // Pass remove function as a prop
-        clearCart={clearCart} // Pass the clearCart function as a prop
+        //? clearCart={clearCart} // Pass the clearCart function as a prop
       />
       <Footer />
     </div>

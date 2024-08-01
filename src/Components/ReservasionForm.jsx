@@ -11,35 +11,30 @@ const ReservationForm = ({
   setCart,
   cart,
 }) => {
-  // useRef hooks to create references for form fields
+  // *useRef hooks to create references for form fields:
   const nameRef = useRef("");
   const emailRef = useRef("");
   const phoneRef = useRef("");
   const addressRef = useRef("");
   const deliveryRef = useRef("");
 
-  // useState hook to manage the total price state that start from totalCartPrice that came from the PaymentPage
+  // *useState hook to manage the total price state that start from totalCartPrice that came from the PaymentPage
   const [totalPrice, setTotalPrice] = useState(totalCartPrice);
 
-  // State for success message and order ID
+  //* useState for success message and order ID
   const [successMessage, setSuccessMessage] = useState("");
   const [orderId, setOrderId] = useState(null);
 
+  //* useState for isSubmitted
   const [isSubmitted, setIsSubmitted] = useState(false); // State to track form submission status
 
-  // const clearCart = () => {
-  //   setCart({});
-  // };
+  // ?const clearCart = () => {
+  //  ? setCart({});
+  // ?};
 
   const navigate = useNavigate(); // Initialize useNavigate
 
-  // useEffect(() => {
-  //   if (isSubmitted) {
-  //     setCart({});
-  //   }
-  // }, [isSubmitted]);
-
-  // The useEffect hook takes two arguments:
+  // *The useEffect hook takes two arguments:
   // 1. A function that contains the side effect code.
   // 2. An array of dependencies. The side effect runs when these dependencies change. Here, totalCartPrice is the dependency.
   useEffect(() => {
@@ -83,6 +78,7 @@ const ReservationForm = ({
       delivery: deliveryRef.current.value,
       totalPrice: totalPrice,
       cartItems: cartItems.map((item) => ({
+        //* that way we will sent trough the fetch propety about the items
         productName: item.name,
         quantity: item.quantity, // Adjusted to use item.quantity instead of cartItems[item.id]
         price: item.price,
@@ -128,7 +124,7 @@ const ReservationForm = ({
   return (
     <Container className="head my-5">
       <h2>Reservation Form</h2>
-      {successMessage && ( // the alert messege with the mongo _id , only be rendering after succesful submit! until that its empty string wich count as false !
+      {successMessage && ( // *the alert messege with the mongo _id , only be rendering after succesful submit! until that its empty string wich count as false !
         <Alert variant="success">
           {successMessage} Your order ID is {orderId}.
         </Alert>
@@ -198,10 +194,14 @@ const ReservationForm = ({
             <h4>Total Price: ${totalPrice.toFixed(2)}</h4>
           </Col>
         </Row>
-        <Button variant="primary" type="submit" disabled={isCartEmpty}>
+        <Button
+          variant="primary"
+          type="submit"
+          disabled={isCartEmpty || isSubmitted}
+        >
           Submit
         </Button>
-        {/* Conditional Rendering: for the Return to Home Page:
+        {/* //*Conditional Rendering: for the Return to Home Page:
             The "Return to Home Page" button is rendered only when isSubmitted is true using {isSubmitted && ( ... )}.
             This means the button is not part of the initial render and will only appear after the form has been submitted successfully. */}
         {isSubmitted && (

@@ -1,12 +1,12 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Container, Row, Col } from "react-bootstrap";
-import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
+import { FaGithub, FaTwitter, FaInstagram, FaLinkedin } from "react-icons/fa";
 import "./Footer.css";
 
 const Footer = () => {
   return (
-    <footer className=" text-white pt-4">
+    <footer id="fotter" className=" text-white pt-4">
       <Container>
         <Row>
           <Col md={4} className="mb-3">
@@ -20,23 +20,8 @@ const Footer = () => {
             <h4>Quick Links</h4> <hr />
             <ul className="list-unstyled">
               <li>
-                <a href="#" className="text-white">
+                <a href="#open" className="text-white">
                   Home
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-white">
-                  About
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-white">
-                  Services
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-white">
-                  Contact
                 </a>
               </li>
             </ul>
@@ -45,27 +30,30 @@ const Footer = () => {
             <h4>Contact Us</h4> <hr />
             <ul className="list-unstyled">
               <li>
-                <i className="fas fa-map-marker-alt"></i> 1234 Street Name,
-                City, State
+                <i className="fas fa-map-marker-alt"></i> Sapir Collage
               </li>
               <li>
                 <i className="fas fa-phone"></i> (123) 456-7890
               </li>
               <li>
-                <i className="fas fa-envelope"></i> email@example.com
+                <i className="fas fa-envelope"></i> itamarshapirait@gmail.com
+              </li>
+              <li>
+                <i className="fas fa-envelope"></i> ofir.rodity@gmail.com
               </li>
             </ul>
             <div className="mt-3">
-              <a href="#" className="text-white me-2">
-                <FaFacebook size={20} />
+              <a
+                href="https://github.com/itamarshapira/shoe-store.git"
+                className="text-white me-2"
+              >
+                <FaGithub size={20} />
               </a>
-              <a href="#" className="text-white me-2">
-                <FaTwitter size={20} />
-              </a>
-              <a href="#" className="text-white me-2">
-                <FaInstagram size={20} />
-              </a>
-              <a href="#" className="text-white">
+
+              <a
+                href="https://www.linkedin.com/in/itamar-shapira-921a72279/"
+                className="text-white"
+              >
                 <FaLinkedin size={20} />
               </a>
             </div>

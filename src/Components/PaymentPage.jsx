@@ -9,7 +9,7 @@ const PaymentPage = () => {
   const { cart, productInf, clearCart } = location.state || {
     cart: {},
     productInf: [],
-    clearCart,
+    //? clearCart,
   };
 
   // Filter method to get items in the cart - creating new array named: cartItems , only cart with the id that we filter
@@ -76,7 +76,7 @@ const PaymentPage = () => {
         totalCartPrice={parseFloat(getTotalCartPrice())}
         isCartEmpty={cartItems.length === 0}
         cartItems={cartItems} // Pass cartItems to ReservationForm
-        clearCart={clearCart} // Pass the clearCart function to ReservationForm
+        // ? clearCart={clearCart} // Pass the clearCart function to ReservationForm
         cart={cart}
       />
     </div> //PaymentPage - finish.
